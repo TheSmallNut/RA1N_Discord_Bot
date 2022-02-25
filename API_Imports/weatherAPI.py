@@ -1,6 +1,6 @@
 import requests
 import json
-import secret
+import API_Imports.secret as secret
 
 BASE_URL = f"http://api.weatherapi.com/v1/forecast.json?key={secret.WEATHERAPIKEY}"
 #r = requests.get(BASEURL).json()

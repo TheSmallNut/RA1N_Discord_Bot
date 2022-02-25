@@ -21,9 +21,4 @@ def reloadModules():
 loadModules()
 
 
-@bot.command()
-async def reload(ctx):
-    reloadModules()
-    await ctx.send("Modules Reloaded")
-
 bot.run(secret.DISCORDTOKEN)
