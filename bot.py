@@ -12,12 +12,6 @@ def loadModules():
             bot.load_extension(f"modules.{filename[:-3]}")
 
 
-def reloadModules():
-    for filename in os.listdir("./modules"):
-        if filename.endswith(".py"):
-            bot.reload_extension(f"modules.{filename[:-3]}")
-
-
 loadModules()
 
 

@@ -3,10 +3,11 @@ import discord
 import os
 
 
-def reloadModules(self):
+async def reloadAllModules(self, ctx):
     for filename in os.listdir("./modules"):
         if filename.endswith(".py"):
             self.bot.reload_extension(f"modules.{filename[:-3]}")
+            await ctx.send(f"**{filename[:-3]}** module reloaded")
 
 
 def reloadModule(self, moduleName):
@@ -20,14 +21,14 @@ class Admin(commands.Cog, name="Admin"):
     @commands.command(name="reload", aliases=[])
     async def _reload(self, ctx: commands.Context, module="all"):
         if module == "all":
-            reloadModules(self)
-            await ctx.send("ALL Modules Reloaded")
+            await reloadAllModules(self, ctx)
+            await ctx.send("ALL Modules Successfully Reloaded")
         else:
             try:
                 reloadModule(self, module)
-                await ctx.send(f"{module} reloaded")
+                await ctx.send(f"**{module}** module reloaded")
             except:
-                await ctx.send(f"No module named {module}")
+                await ctx.send(f"No module named **{module}**")
 
 
 def setup(bot):
